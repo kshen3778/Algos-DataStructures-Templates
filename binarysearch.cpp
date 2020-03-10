@@ -7,7 +7,7 @@ using namespace std;
 //returns location of x or -1 if not found
 int binarySearch(vector<int> &vec, int l, int r, int x){
   if(r >= l){
-    int mid = l + (r - 1) / 2;
+    int mid = l + (r - l) / 2;
 
     //FOUND IT
     if(vec[mid] == x){
