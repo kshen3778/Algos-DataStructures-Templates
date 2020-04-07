@@ -187,22 +187,21 @@ class Graph {
 
 int main(){
 
-  //Directed graph
-  Graph g(4);
-  g.addEdge(0, 1, true);
-  g.addEdge(1, 2, true);
-  g.addEdge(2, 3, true);
-  g.addEdge(3, 1, true);
-  g.hamiltonian(0,3);
-
+  // //No Hamil Paths
   // Graph g(4);
-  // g.addEdge(0,1, true);
-  // g.addEdge(0,2, true);
-  // g.addEdge(0,3, true);
-  // g.addEdge(1,2, true);
-  // g.addEdge(1,3, true);
-  // g.addEdge(2,3, true);
-  //
-  // g.hamiltonian(0, 3);
+  // g.addEdge(0, 1, true);
+  // g.addEdge(1, 2, true);
+  // g.addEdge(3, 1, true);
+  // g.hamiltonian(0,3);
+
+  //Two Hamil Paths
+  Graph g(4);
+  g.addEdge(0,1, true);
+  g.addEdge(0,2, true);
+  g.addEdge(0,3, true);
+  g.addEdge(1,2, true);
+  g.addEdge(1,3, true);
+  g.addEdge(2,3, true);
+  g.hamiltonian(0, 3);
 
 }
