@@ -12,7 +12,7 @@ int countPS(string s){
   int n = s.length();
   set<string> palindromes; //stores all palindromes since we don't want duplicates
 
-  vector<vector<int>> dp(n, vector<int>(n, 0)); //dp[i][j] contains the # of palindromes for substring string[i....j]
+  //vector<vector<int>> dp(n, vector<int>(n, 0)); //dp[i][j] contains the # of palindromes for substring string[i....j]
   vector<vector<bool>> P(n, vector<bool>(n, false)); //p[i][j] is true if string[i.....j] is a palindrome
 
   //You need to atleast fill the DP table to have palindromes of lengths 1 and 2 for the indexing to work
@@ -20,7 +20,7 @@ int countPS(string s){
   //get all palindromes of length 1
   for(int i=0; i<n; i++){
     P[i][i] = true;
-    dp[i][i] += 1;
+    //dp[i][i] += 1;
     palindromes.insert(s.substr(i, 1));
   }
 
@@ -28,7 +28,7 @@ int countPS(string s){
   for(int i=0; i<n-1; i++){
     if(s[i] == s[i+1]){
       P[i][i+1] = true;
-      dp[i][i+1] += 1;
+      //dp[i][i+1] += 1;
       palindromes.insert(s.substr(i, 2));
     }
   }
@@ -46,17 +46,17 @@ int countPS(string s){
       }
 
       //increment DP table
-      if(P[start][end] == true){
-        //if it was a palindrome: "baab" -> palins("baa") + palins("aab") + 1 - palins("aa")
-        //duplicates must be removed since its double counted in palins("baa"),palins("aab")
-        //+1 is for "baab" entire string
-        dp[start][end] = dp[start][end - 1] + dp[start + 1][end] - dp[start + 1][end - 1] + 1;
-      } else {
-        //if it wasn't a palindrome: "baac" -> palins("baa") + palins("aac") - palins("aa")
-        //duplicates are once again removed ("aa" part)
-        //there is no +1 because "baac" is not a palindrome
-        dp[start][end] = dp[start][end - 1] + dp[start + 1][end] - dp[start + 1][end - 1];
-      }
+      // if(P[start][end] == true){
+      //   //if it was a palindrome: "baab" -> palins("baa") + palins("aab") + 1 - palins("aa")
+      //   //duplicates must be removed since its double counted in palins("baa"),palins("aab")
+      //   //+1 is for "baab" entire string
+      //   dp[start][end] = dp[start][end - 1] + dp[start + 1][end] - dp[start + 1][end - 1] + 1;
+      // } else {
+      //   //if it wasn't a palindrome: "baac" -> palins("baa") + palins("aac") - palins("aa")
+      //   //duplicates are once again removed ("aa" part)
+      //   //there is no +1 because "baac" is not a palindrome
+      //   dp[start][end] = dp[start][end - 1] + dp[start + 1][end] - dp[start + 1][end - 1];
+      // }
 
     }
 
@@ -73,6 +73,6 @@ int countPS(string s){
 }
 
 int main(){
-  string s = "abaab";
+  string s = "mokkori";
   cout << countPS(s) << endl;
 }
