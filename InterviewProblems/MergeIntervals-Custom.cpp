@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/merge-intervals/
+//Custom solution using ordered map and stack
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
